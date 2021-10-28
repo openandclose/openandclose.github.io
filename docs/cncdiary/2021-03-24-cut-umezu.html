@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cut an Umezu</title>
+    <link rel="author" href="https://openandclose.github.io/">
+    <link rel="stylesheet" type="text/css" href="/css/default.css">
+  </head>
+  <body id="main">
+  
+  
+
+  
+<h1 class="title">Cut an Umezu</h1>
+<div class="content">
+  <p>I implemented the point method ('halftone') in
+<a class="reference external" href="https://github.com/openandclose/photo2cnccut">photo2cnccut</a>
+(the same as '--dot' or 'pointmode' in
+<a class="reference external" href="https://github.com/built1n/rastercarve">rastercarve</a>),
+so I wanted to test it.</p>
+<p>Initially, I was not interested in the method (not metal-cut-worthy),
+but I found, for some extremely expressive subjects,
+the point method actually looked better than the line method.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Head_VI">Francis Bacon Head VI</a>:</p>
+<!-- .. image:: /images/2021/head6.jpg -->
+<!-- :alt: picture of a 'Head VI' (jpg) -->
+<!-- :width: 450px -->
+<img alt="picture of a 'Head VI' (svg)" src="/images/2021/head6.svg" style="width: 450px;" />
+<p>For me, it is very promising, but clearly not good enough.
+To trace minute colors and shapes, point radius got very small,
+and the picture lost the strong characters.</p>
+<p>I want to bring in a violent resolution degradation,
+somehow closely related to physical cnc processes.
+But that would require more clever algorithms,
+probably with a bit more math.
+So I put it into the 'TODO'...</p>
+<p>---</p>
+<p>But let's first test the point method, if it works at all.</p>
+<!-- .. image:: /images/2021/umezu1.jpg -->
+<!-- :alt: picture of a frame of comic artist Umezu Kazuo -->
+<img alt="picture of a frame of comic artist Umezu Kazuo" src="/images/2021/umezu2.jpg" />
+<p>This is an highly popular comic frame in Japan. From &quot;Baptism&quot; 1974-76,
+by horror comic artist Umezu Kazuo.</p>
+<p>This time I painted it the easiest way.
+Put on water acrylic paint from tube, wait 30 seconds,
+and wipe with parts-cleaner-sprayed-cloth.</p>
+<p>There are some residue on the surface, with some points left unpainted.
+But I had the impression that 'wiping' is quite an art by itself,
+and if one gets really good at it, it may be suffice to produce professional results.</p>
+<p>Also, it was a good occasion to test the customization feature of
+<a class="reference external" href="https://github.com/openandclose/photo2cnccut">my script</a>.
+Since the original is a black and white comic,
+I didn't want every size of points (256 shades of grays).
+With some try and error, I limited the number of sizes to 5,
+omitting smaller (whiter) half altogether.
+It made the cnc running time faster too.</p>
+<p>The script automatically reads and uses the custom class from file 'p2cmodule.py',
+so the needed code was only this:</p>
+<pre class="code python literal-block"><code><span class="keyword namespace">from</span> <span class="name namespace">photo2cnccut</span> <span class="keyword namespace">import</span> <span class="name">line</span>
+
+
+<span class="keyword">class</span> <span class="name class">Data</span><span class="punctuation">(</span><span class="name">line</span><span class="operator">.</span><span class="name">Data</span><span class="punctuation">):</span>
+    <span class="literal string doc">&quot;&quot;&quot;Remove whiter parts, and limit the variations of intensity.&quot;&quot;&quot;</span>
+
+    <span class="keyword">def</span> <span class="name function">process_intensity</span><span class="punctuation">(</span><span class="name builtin pseudo">self</span><span class="punctuation">,</span> <span class="name">intensity</span><span class="punctuation">):</span>
+        <span class="keyword">if</span> <span class="name">intensity</span> <span class="operator">&gt;</span> <span class="literal number integer">158</span><span class="punctuation">:</span>
+            <span class="keyword">return</span> <span class="keyword constant">None</span>  <span class="comment single"># skip</span>
+        <span class="keyword">return</span> <span class="name builtin">round</span><span class="punctuation">(</span><span class="name">intensity</span> <span class="operator">/</span> <span class="literal number integer">32</span><span class="punctuation">)</span> <span class="operator">*</span> <span class="literal number integer">32</span></code></pre>
+<p>---</p>
+<p><strong>TODO</strong>:</p>
+<p>If the number of sizes is just 5 or so,
+I don't need a special kind of cutting tool, with a sensitive tool tip.
+Just normal drills with that number of sizes (diameters) would suffice.</p>
+<p>And that would also 'solve' the painting problem.
+If the drill cuts are sufficiently deep,
+they will look black by shadow.</p>
+
+</div>
+
+  </body>
+</html>

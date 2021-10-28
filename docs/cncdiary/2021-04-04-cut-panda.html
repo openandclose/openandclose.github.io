@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cut Panda</title>
+    <link rel="author" href="https://openandclose.github.io/">
+    <link rel="stylesheet" type="text/css" href="/css/default.css">
+  </head>
+  <body id="main">
+  
+  
+
+  
+<h1 class="title">Cut Panda</h1>
+<div class="content">
+  <p>I wanted to test the customization capability of
+<a class="reference external" href="https://github.com/openandclose/photo2cnccut">my script</a> more,
+and I found a suitable subject.</p>
+<p><strong>The original</strong>:</p>
+<p>You are supposed to be able to see a panda in the center.
+The canonical url seems to be
+<a class="reference external" href="https://imgur.com/gallery/KaCDmz4">this</a>.</p>
+<img alt="picture of zig-zag panda (original)" src="/images/2021/panda.jpg" style="width: 300px;" />
+<p><strong>panda part only</strong>:</p>
+<p>I extracted the panda part.
+Since I couldn't find the better way,
+I actually counted the number of black and white pixels
+using Python and Pillow.
+The difference was very small, iirc,
+the zig-zag line width of the non-panda part was horizontally 7 to 8 pixels,
+and the panda part was 8 to 9 pixels (13% increase).
+After that I adjusted the image with gimp
+(removed unrelated black spots, added small blur).</p>
+<img alt="picture of zig-zag panda (extracted panda part)" src="/images/2021/panda-only.png" style="width: 300px;" />
+<p><strong>g-code path</strong>:</p>
+<p>Although it is hard to see from the image below,
+each zig-zag line is made from two paths.
+The planned line width is 0.7mm,
+which is going to made from two 0.5mm end mill paths, horizontally 0.2mm displaced.
+If the paths enters 'the panda part',
+the paths horizontally moves even more (0.1-0.15mm).</p>
+<p>(The image was made using <a class="reference external" href="https://ncviewer.com/">ncviewer</a>.)</p>
+<img alt="picture of zig-zag panda (g-code path)" src="/images/2021/panda-nc.png" style="width: 300px;" />
+<p><strong>The result (laser cut)</strong>:</p>
+<p>I ended up cutting it, on a transparent acrylic board, with a laser machine.</p>
+<p>The above cnc requirements (deep slotting with so small end mill)
+were quite hard,
+I couldn't make up my mind doing.</p>
+<p>It was the first time I used a laser,
+but compared to metal cutting, laser graving is so easy,
+I already feel rather spoiled.</p>
+<img alt="picture of zig-zag panda (laser-cut 1)" src="/images/2021/panda1_1.jpg" style="width: 300px;" />
+<img alt="picture of zig-zag panda (laser-cut 2)" src="/images/2021/panda1_2.jpg" style="width: 300px;" />
+<p>---</p>
+<p><strong>TODO</strong>:</p>
+<p>(the program)</p>
+<p>While I followed a normal customization path the program provided
+('p2cconfig.py' and 'p2cmodule.py'),
+the codes were rather forced,
+I cannot say the program integrates it well.</p>
+<p>So I skip the explanation of the codes,
+although it was the intention of the article.</p>
+<p>(the cutting)</p>
+<p>On the images, and with the actual eyes,
+the cut part looks white, on a (glossy) transparent acrylic board.
+The uncut part, on the other hand, looks black.
+so it would be better to reverse the cut and uncut part.</p>
+
+</div>
+
+  </body>
+</html>

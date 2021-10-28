@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cut Mona Lisa</title>
+    <link rel="author" href="https://openandclose.github.io/">
+    <link rel="stylesheet" type="text/css" href="/css/default.css">
+  </head>
+  <body id="main">
+  
+  
+
+  
+<h1 class="title">Cut Mona Lisa</h1>
+<div class="content">
+  <p>I cut Mona Lisa, on 100x100 mm aluminum plate, using my newly created program,
+<a class="reference external" href="https://github.com/openandclose/photo2cnccut">photo2cnccut</a>.</p>
+<p>This is the data to cut (jpeg).
+I've got the picture from Wikipedia, cropped and grayscaled.</p>
+<img alt="picture of cropped Mona Lisa" src="/images/2021/mona0_0.jpg" style="width: 450px;" />
+<p>This is the program-processed cutting data (svg).
+The black lines are where the tool passes, with varying depths.</p>
+<img alt="picture of generated Mona Lisa data" src="/images/2021/mona0_1.svg" style="width: 450px;" />
+<p>Since it <em>just</em> cuts many straight lines,
+the method is not so slow, relatively speaking,
+(30 minutes rather than 3 hours).</p>
+<p>But as you see, by just cutting, it didn't make a great object.</p>
+<img alt="picture of Mona Lisa cut on aluminum (front)" src="/images/2021/mona1_1.jpg" />
+<img alt="picture of Mona Lisa cut on aluminum (side)" src="/images/2021/mona1_2.jpg" />
+<p>From a very narrow angle and lighting,
+you can discern the original picture.</p>
+<img alt="picture of Mona Lisa cut on aluminum (from an angle)" src="/images/2021/mona1_3.jpg" />
+<p>I painted the grooves
+(spray black paint and sand the surface).
+Now you can see the face from the front.</p>
+<img alt="picture of Mona Lisa cut on aluminum (painted)" src="/images/2021/mona2_2.jpg" />
+<p>---</p>
+<p>The method translates grayscale image intensities (0 to 255, or black to white),
+to g-code Z depths.
+So the tool tip is rather important.</p>
+<ul class="simple">
+<li><p>The minimum diameter must be small enough.</p></li>
+<li><p>The steeper the angle, the better the effect.</p></li>
+<li><p>The tool tip shape should be uniform.</p></li>
+</ul>
+<p>The cutting data was created with 0.6mm maximum width.
+I assumed the tool should be able to cut at least 0.2mm width of lines cleanly.</p>
+<p>The <a class="reference external" href="https://github.com/built1n/rastercarve">rastercarve</a> author
+recommends 30 degree engraving bits.
+But on aluminum, to be safe, I searched 45-60 degree tools.
+Also, the usual engraving bit shape (like half cut cone) looked too fragile.
+More sturdy looking ones (if any) would be better.</p>
+<p>I found out most drills, spot drills or other special drills (for metal)
+have big chisels or obtuse initial angles.
+In general, tool makers tend to boast complex tool tip shapes,
+which makes the tools tougher.
+I tried those first, but I couldn't get to less than about 0.4mm minimum width.
+(This was actually somewhat fine, but the effects got more cartoonish.)</p>
+<p>I tried a 45 degree V bit, <a class="reference external" href="https://www.amanatool.com/45613-zero-point-45-degree-v-groove-and-engraving-1-4-dia-x-3-4-x-1-4-shank-zrn-coated-router-bit-1.html">Amana Tools #45613</a> next.
+But I damaged the tool tip, in a few minutes of test cutting.
+I had measured the tool length offset as usual,
+using the auto tool setter installed in the industrial machine.
+Since the tip radius is near zero, it may not have been good.</p>
+<p>I ended up with a 90 degree drill, <a class="reference external" href="https://www.nicecut.co.jp/centering.html#pinko">Nicecut Pinko</a> (<a class="reference external" href="https://www.nicecut.co.jp/english/pdf/pinko.pdf">English PDF</a>),
+which turned out fine.
+But the 90 degree angle may not be ideal for the cut effect
+(... But actually, the wider the angle, the easier to paint).</p>
+<p>On the other hand, the maker says Pinko can cut 0.01mm chamfer,
+which I have no use for.
+I want rather, say, clean and reliable 0.1mm cut guarantee.</p>
+
+</div>
+
+  </body>
+</html>

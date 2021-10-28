@@ -1,0 +1,79 @@
+
+@import url(normalize.css);
+
+body {
+    margin: 0.5em;
+    line-height: 1.5;
+}
+
+a {
+    color: #2E2E2E;
+}
+
+.nodec {
+    text-decoration: none;
+}
+
+.nodec:hover {
+    text-decoration: underline;
+}
+
+h1.sitetitle {
+    margin-bottom: 0;
+}
+
+span.menu {
+    padding-left: 0.3em;
+}
+
+span.currentmenu {
+    color: #343434;
+    font-weight: bold;
+}
+
+.postdate {
+    color: #666666;
+    font-size: smaller;
+}
+
+hr.endbanner {
+    margin-left: 0;
+    margin-bottom: 2em;
+}
+
+ul.postlist {
+    margin-left: 0;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+img, object {
+    display: block;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    height: auto;
+}
+
+pre {
+    white-space: pre-wrap;
+    border: 1px solid;
+    border-color: lightgray;
+}
+
+
+@media (min-width: 30em) {
+    img, object {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 50em) {
+    body {
+        margin: auto;
+        max-width: 50em;
+    }
+
+    hr.endbanner {
+        max-width: 30em;
+    }
+}
